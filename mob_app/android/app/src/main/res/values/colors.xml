@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App background color (dark theme) -->
+    <color name="mob_background">#0A0E1A</color>
+
+    <!-- FCM notification accent color (Mob cyan) -->
+    <color name="notification_color">#00F0FF</color>
+</resources>

@@ -1,0 +1,23 @@
+# Mob App — Launcher Icon Configuration
+# https://pub.dev/packages/flutter_launcher_icons
+#
+# After placing icon PNGs in assets/icon/, run:
+#   dart run flutter_launcher_icons
+#
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+
+  # Android adaptive icon (API 26+)
+  adaptive_icon_background: "#0A0E1A"
+  adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
+
+  # Android minimum SDK
+  min_sdk_android: 21
+
+  # Remove the default alpha channel on iOS (App Store rejects alpha)
+  remove_alpha_ios: true
+
+  # Web favicon (optional, for PWA/web builds)
+  web: false

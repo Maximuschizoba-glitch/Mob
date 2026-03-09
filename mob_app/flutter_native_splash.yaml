@@ -1,0 +1,26 @@
+# Mob App — Native Splash Screen Configuration
+# https://pub.dev/packages/flutter_native_splash
+#
+# After placing splash_logo.png in assets/splash/, run:
+#   dart run flutter_native_splash:create
+#
+flutter_native_splash:
+  # Background color — matches app dark theme (#0A0E1A)
+  color: "#0A0E1A"
+
+  # Centered logo image
+  image: "assets/splash/splash_logo.png"
+
+  # Platform toggles
+  android: true
+  ios: true
+  web: false
+
+  # Android 12+ (uses SplashScreen API)
+  android_12:
+    color: "#0A0E1A"
+    image: "assets/splash/splash_logo.png"
+
+  # Keep the splash visible until Flutter is ready
+  # (removed automatically when the first frame is rendered)
+  fullscreen: true

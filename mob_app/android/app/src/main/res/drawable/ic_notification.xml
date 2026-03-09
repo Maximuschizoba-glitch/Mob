@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Notification small icon for FCM push notifications.
+     Must be white on transparent for Android status bar rendering.
+     This is a simple "M" letterform representing the Mob brand. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M4,4h2l6,8 6,-8h2v16h-2V8.5l-5,6.5h-2L6,8.5V20H4z"/>
+</vector>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Mob</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Mob</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+
+	<!-- Portrait only — no landscape in MVP -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<!-- Permission Usage Descriptions (required for App Store) -->
+	<!-- ═══════════════════════════════════════════════════════ -->
+
+	<!-- Location — used for discovery feed, map, posting happenings -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Mob uses your location to show happenings near you, display your position on the map, and set the location when you post a happening.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Mob uses your location to show happenings near you and keep the map updated.</string>
+
+	<!-- Camera — used for snap camera, avatar photo -->
+	<key>NSCameraUsageDescription</key>
+	<string>Mob needs camera access so you can take snaps at happenings and update your profile photo.</string>
+
+	<!-- Photo Library — used for selecting snaps from gallery, avatar from gallery -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Mob needs photo library access so you can select photos for snaps and your profile picture.</string>
+
+	<!-- Microphone — used when recording video snaps -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Mob needs microphone access to record audio with video snaps.</string>
+
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<!-- Performance & Display -->
+	<!-- ═══════════════════════════════════════════════════════ -->
+
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+</dict>
+</plist>
