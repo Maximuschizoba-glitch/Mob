@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "670264828398",
-    "project_id": "mob-app-a12ff",
-    "storage_bucket": "mob-app-a12ff.firebasestorage.app"
+    "project_number": "236206598377",
+    "project_id": "mob-universal",
+    "storage_bucket": "mob-universal.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:670264828398:android:e168443d4b0aaa3285aeff",
+        "mobilesdk_app_id": "1:236206598377:android:8e7bf1731d82d26bd72878",
         "android_client_info": {
           "package_name": "com.mob.app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBPw29Y4ouBwbaySe4BuJAuFmkUQK9SQ-c"
+          "current_key": "AIzaSyD80lNA-9R-VDc21sruOUyJyN3gJ61Xn0I"
         }
       ],
       "services": {

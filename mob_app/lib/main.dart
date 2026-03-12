@@ -227,7 +227,11 @@ void main() async {
   );
 
 
-  await FirebaseAuth.instance.signInAnonymously();
+  try {
+    await FirebaseAuth.instance.signInAnonymously();
+  } catch (e) {
+    debugPrint('[Mob] Anonymous auth skipped: $e');
+  }
 
 
   final firebaseStorageService = FirebaseStorageService();
@@ -236,7 +240,11 @@ void main() async {
   final pushNotificationService = PushNotificationService(
     router: AppRouter.router,
   );
-  await pushNotificationService.initialize();
+  try {
+    await pushNotificationService.initialize();
+  } catch (e) {
+    debugPrint('[Mob] Push notifications skipped: $e');
+  }
 
 
   runApp(
