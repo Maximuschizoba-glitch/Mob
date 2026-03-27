@@ -38,8 +38,16 @@ return [
         'webhook_secret' => env('FLUTTERWAVE_WEBHOOK_SECRET'),
     ],
 
+    'termii' => [
+        'api_key' => env('TERMII_API_KEY'),
+        'sender_id' => env('TERMII_SENDER_ID', 'Mob'),
+    ],
+
     'firebase' => [
         'project_id' => env('FIREBASE_PROJECT_ID'),
+        // Railway-safe: base64-encoded JSON string (preferred in production)
+        'credentials_json' => env('FIREBASE_CREDENTIALS_JSON'),
+        // Local dev fallback: path to the JSON file
         'credentials_path' => env('FIREBASE_CREDENTIALS_PATH'),
     ],
 

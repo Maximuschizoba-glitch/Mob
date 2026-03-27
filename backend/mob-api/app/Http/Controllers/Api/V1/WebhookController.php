@@ -51,7 +51,7 @@ class WebhookController extends BaseController
         $hash = $request->header('verif-hash');
         $secret = config('services.flutterwave.webhook_secret');
 
-        if (! $hash || $hash !== $secret) {
+        if (! $hash || ! $secret || ! hash_equals($secret, $hash)) {
             return response('Unauthorized', 401);
         }
 
