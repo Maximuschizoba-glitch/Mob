@@ -102,6 +102,8 @@ Route::prefix('v1')->middleware(['auth:sanctum', 'not-suspended', 'throttle:api'
     });
 
 
+    Route::put('/profile', [AuthController::class, 'updateProfile'])
+        ->middleware('not-guest');
     Route::delete('/profile', [AuthController::class, 'deleteAccount'])
         ->middleware('not-guest');
 

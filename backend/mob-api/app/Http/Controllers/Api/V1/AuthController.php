@@ -43,7 +43,7 @@ class AuthController extends BaseController
 
 
         $verificationToken = $emailVerificationService->generateToken($user);
-        Log::info("Email verification token for {$user->email}: {$verificationToken}");
+        $emailVerificationService->sendVerificationEmail($user, $verificationToken);
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -139,8 +139,7 @@ class AuthController extends BaseController
             return $this->successResponse(null, 'OTP sent successfully (dev bypass active)');
         }
 
-
-        Log::info("OTP for {$phone}: {$otp}");
+        $otpService->sendViaSms($phone, $otp);
 
         return $this->successResponse(null, 'OTP sent to your phone number');
     }
@@ -228,6 +227,22 @@ class AuthController extends BaseController
 
 
 
+
+    public function updateProfile(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'name' => ['sometimes', 'string', 'max:100'],
+            'avatar_url' => ['sometimes', 'nullable', 'url', 'max:2048'],
+        ]);
+
+        $user = $request->user();
+        $user->update($validated);
+
+        return $this->successResponse(
+            new UserResource($user->fresh()->load('hostProfile')),
+            'Profile updated successfully'
+        );
+    }
 
     public function deleteAccount(Request $request): JsonResponse
     {
