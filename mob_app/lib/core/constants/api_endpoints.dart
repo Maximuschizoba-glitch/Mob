@@ -4,7 +4,7 @@ class ApiEndpoints {
   ApiEndpoints._();
 
 
-  static const String baseUrl = 'https://mob.getbuukride.com/api/v1';
+  static const String baseUrl = 'https://mob-production-bddb.up.railway.app/api/v1';
 
 
   static const String health = '/health';
