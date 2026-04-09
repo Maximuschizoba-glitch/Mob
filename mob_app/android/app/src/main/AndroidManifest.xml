@@ -50,7 +50,7 @@
             android:value="2"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB3XjRtTbIQ6w-k4CltAJV5foycPiFNdCI"/>
+            android:value="AIzaSyCAiwSrZAQnfkFRp16qW2FbtpOedlOEpG4"/>
 
         <!-- FCM: Default notification channel for background messages -->
         <meta-data
