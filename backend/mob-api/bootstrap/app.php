@@ -18,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->trustProxies(at: '*');
         $middleware->alias([
             'not-guest' => \App\Http\Middleware\EnsureNotGuest::class,
             'verified-phone' => \App\Http\Middleware\EnsureVerifiedPhone::class,
