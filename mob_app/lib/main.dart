@@ -58,7 +58,7 @@ void main() async {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
       statusBarBrightness: Brightness.dark,
-      systemNavigationBarColor: Color(0xFF0A0E1A),
+      systemNavigationBarColor: Color(0xFF0A0A0F), // matches AppColors.background
       systemNavigationBarIconBrightness: Brightness.light,
     ),
   );
@@ -265,6 +265,7 @@ void main() async {
       notificationRepository: notificationRepository,
       firebaseStorageService: firebaseStorageService,
       connectivityService: connectivityService,
+      sharedPreferences: prefs,
     ),
   );
 }

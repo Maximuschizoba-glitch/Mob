@@ -34,9 +34,10 @@ class AccentPalettePicker extends StatelessWidget {
               runSpacing: AppSpacing.sm,
               children: [
                 for (final color in AppColors.accentPresets)
+                  // ignore: prefer_const_constructors
                   _AccentSwatch(
                     color: color,
-                    isSelected: state.accentColor.value == color.value,
+                    isSelected: state.accentColor.toARGB32() == color.toARGB32(),
                     onTap: () =>
                         context.read<ThemeCubit>().setAccentColor(color),
                   ),
@@ -44,7 +45,7 @@ class AccentPalettePicker extends StatelessWidget {
             ),
             AppSpacing.verticalMd,
             // Reset to default
-            if (state.accentColor.value != AppColors.primary.value)
+            if (state.accentColor.toARGB32() != AppColors.primary.toARGB32())
               TextButton(
                 onPressed: () => context.read<ThemeCubit>().resetAccent(),
                 child: const Text('Reset to default'),

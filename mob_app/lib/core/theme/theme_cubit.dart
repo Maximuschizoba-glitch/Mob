@@ -29,7 +29,7 @@ class ThemeState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [accentColor.value, isDark];
+  List<Object?> get props => [accentColor.toARGB32(), isDark];
 }
 
 // ---------------------------------------------------------------------------
@@ -56,11 +56,13 @@ class ThemeCubit extends Cubit<ThemeState> {
     return AppColors.primary; // Electric Blue default
   }
 
+  static int _colorToInt(Color color) => color.toARGB32();
+
   // ---- Public API ----------------------------------------------------------
 
   /// Change the accent color and persist it.
   Future<void> setAccentColor(Color color) async {
-    await _prefs.setInt(_kAccentKey, color.value);
+    await _prefs.setInt(_kAccentKey, _colorToInt(color));
     emit(state.copyWith(accentColor: color));
   }
 
