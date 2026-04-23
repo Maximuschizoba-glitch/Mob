@@ -53,7 +53,7 @@ class PageController extends Controller
             <h2>Reporting</h2>
             <p>If you encounter any content or behaviour that violates this policy, report it immediately:</p>
             <p><a href="mailto:safety@mobuniversal.tech">safety@mobuniversal.tech</a></p>
-            <p>You can also report child sexual exploitation material directly to NCMEC: <a href="https://www.missingkids.org/gethelpnow/cybertipline" target="_blank" rel="noopener">CyberTipline →</a></p>
+            <p>You can also report child sexual exploitation material directly to NCMEC: <a href="https://www.missingkids.org/gethelpnow/cybertipline" target="_blank" rel="noopener">CyberTipline &rarr;</a></p>
 
             <h2>Detection &amp; Prevention</h2>
             <p>We take proactive steps to prevent CSAE on our platform, including:</p>
@@ -73,7 +73,13 @@ class PageController extends Controller
             <p style="color:#6B7280; font-size:0.85rem; margin-top:2rem;">Last updated: April 2026</p>
         ';
 
-        $footer = SiteContent::getGroup('footer');
+        $footer = [];
+
+        try {
+            $footer = SiteContent::getGroup('footer');
+        } catch (\Exception $e) {
+            // graceful fallback if DB unavailable
+        }
 
         return view('pages.legal', ['title' => 'Child Safety Policy', 'content' => $content, 'footer' => $footer]);
     }
