@@ -49,7 +49,18 @@ class _SplashScreenState extends State<SplashScreen>
     await Future.delayed(const Duration(seconds: 2));
     if (!mounted) return;
 
-    context.read<AuthCubit>().checkAuthStatus();
+    try {
+      await context.read<AuthCubit>().checkAuthStatus().timeout(
+        const Duration(seconds: 5),
+        onTimeout: () {
+          debugPrint('[Mob] Auth check timed out — going to welcome');
+          _navigateTo(RoutePaths.welcome);
+        },
+      );
+    } catch (e) {
+      debugPrint('[Mob] Auth check failed: $e');
+      if (mounted) _navigateTo(RoutePaths.welcome);
+    }
   }
 
   @override

@@ -1,16 +1,16 @@
-// import 'package:connectivity_plus/connectivity_plus.dart';
-// TEMP: connectivity_plus disabled due to iOS compatibility issue
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 class ConnectivityService {
-  // Stub implementation without connectivity_plus
-  
+  final Connectivity _connectivity = Connectivity();
+
   Stream<bool> get onConnectivityChanged {
-    // Always report as connected for now
-    return Stream.value(true);
+    return _connectivity.onConnectivityChanged.map(
+      (results) => results.any((r) => r != ConnectivityResult.none),
+    );
   }
 
   Future<bool> get isConnected async {
-    // Assume always connected for MVP testing
-    return true;
+    final results = await _connectivity.checkConnectivity();
+    return results.any((r) => r != ConnectivityResult.none);
   }
 }

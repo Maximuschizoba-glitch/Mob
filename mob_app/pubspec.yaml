@@ -54,7 +54,7 @@ dependencies:
   shimmer: ^3.0.0
   flutter_svg: ^2.0.10+1
   qr_flutter: ^4.1.0
-  mobile_scanner: ^6.0.2
+  mobile_scanner: ^7.0.0
   lottie: ^3.1.2
 
   # Utils
@@ -64,7 +64,8 @@ dependencies:
   share_plus: ^10.0.2
   permission_handler: ^11.3.1
   webview_flutter: ^4.9.0
-  connectivity_plus: ^6.0.5 
+  connectivity_plus: ^6.0.5
+
 
 dev_dependencies:
   flutter_test:

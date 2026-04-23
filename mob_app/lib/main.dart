@@ -222,10 +222,13 @@ void main() async {
   );
 
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    debugPrint('[Mob] Firebase init failed: $e');
+  }
 
   try {
     await FirebaseAuth.instance.signInAnonymously();
