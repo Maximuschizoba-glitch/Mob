@@ -1,4 +1,5 @@
 [build]
+builder = "NIXPACKS"
 buildCommand = "cd backend/mob-api && composer install --no-dev --optimize-autoloader"
 
 [deploy]
