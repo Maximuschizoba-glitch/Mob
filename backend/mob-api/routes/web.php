@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
+Route::get('/csae-policy', [PageController::class, 'csaePolicy'])->name('csae-policy');
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
