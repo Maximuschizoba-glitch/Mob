@@ -17,9 +17,5 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts --no-plugins
 
 EXPOSE 8080
 
-CMD php artisan package:discover --ansi && \
-    php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache && \
-    php artisan migrate --force && \
-    php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+ENTRYPOINT ["/bin/sh", "-c"]
+CMD ["php artisan migrate --force 2>&1; echo 'MIGRATE_DONE'; php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"]
