@@ -4,4 +4,4 @@ dockerfilePath = "backend/mob-api/Dockerfile"
 buildContext = "backend/mob-api"
 
 [deploy]
-startCommand = "php artisan package:discover --ansi && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+startCommand = "php artisan package:discover --ansi 2>&1 && echo 'Starting server...' && php artisan serve --host=0.0.0.0 --port=$PORT"
