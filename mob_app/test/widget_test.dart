@@ -28,6 +28,7 @@ import 'package:mob_app/features/notifications/domain/entities/app_notification.
 import 'package:mob_app/features/notifications/domain/repositories/notification_repository.dart';
 import 'package:mob_app/features/profile/domain/repositories/host_verification_repository.dart';
 import 'package:mob_app/features/profile/domain/repositories/profile_repository.dart';
+import 'package:mob_app/core/services/connectivity_service.dart';
 import 'package:mob_app/features/ticketing/domain/repositories/ticket_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -167,6 +168,26 @@ class FakeHappeningRepository implements HappeningRepository {
   ) async {
     return const Left(ServerFailure('Not implemented in test'));
   }
+
+  @override
+  Future<Either<Failure, Happening>> updateHappening(
+    String uuid, {
+    String? title,
+    String? description,
+    String? category,
+  }) async {
+    return const Left(ServerFailure('Not implemented in test'));
+  }
+
+  @override
+  Future<Either<Failure, void>> endHappening(String uuid) async {
+    return const Right(null);
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteHappening(String uuid) async {
+    return const Right(null);
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════
@@ -240,8 +261,16 @@ class FakeTicketRepository implements TicketRepository {
   }
 
   @override
-  Future<Either<Failure, Ticket>> verifyTicketPayment(
+  Future<Either<Failure, List<Ticket>>> verifyTicketPayment(
       String ticketUuid) async {
+    return const Right(<Ticket>[]);
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> verifyTicketCheckIn({
+    required String happeningUuid,
+    required String ticketUuid,
+  }) async {
     return const Left(ServerFailure('Not implemented in test'));
   }
 }
@@ -354,6 +383,7 @@ void main() {
     );
 
     final locationService = LocationService();
+    final connectivityService = ConnectivityService();
     final authRepository = FakeAuthRepository();
     final feedRepository = FakeFeedRepository();
     final reportRepository = FakeReportRepository();
@@ -385,6 +415,8 @@ void main() {
         hostVerificationRepository: hostVerificationRepository,
         notificationRepository: notificationRepository,
         firebaseStorageService: firebaseStorageService,
+        connectivityService: connectivityService,
+        sharedPreferences: prefs,
       ),
     );
 

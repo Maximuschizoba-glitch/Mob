@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/connectivity/connectivity_cubit.dart';
 import '../core/network/dio_client.dart';
@@ -7,6 +8,7 @@ import '../core/services/connectivity_service.dart';
 import '../core/services/firebase_storage_service.dart';
 import '../core/services/location_service.dart';
 import '../core/services/storage_service.dart';
+import '../core/theme/theme_cubit.dart';
 import '../features/auth/domain/repositories/auth_repository.dart';
 import '../features/auth/presentation/bloc/auth_cubit.dart';
 import '../features/feed/domain/repositories/feed_repository.dart';
@@ -45,6 +47,7 @@ class MobApp extends StatelessWidget {
     required this.notificationRepository,
     required this.firebaseStorageService,
     required this.connectivityService,
+    required this.sharedPreferences,
   });
 
   final AuthRepository authRepository;
@@ -63,6 +66,9 @@ class MobApp extends StatelessWidget {
   final NotificationRepository notificationRepository;
   final FirebaseStorageService firebaseStorageService;
   final ConnectivityService connectivityService;
+
+  /// Needed by [ThemeCubit] to persist accent color selection.
+  final SharedPreferences sharedPreferences;
 
   @override
   Widget build(BuildContext context) {
@@ -89,49 +95,71 @@ class MobApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
+          // ── Theme ──────────────────────────────────────────────────────────
+          BlocProvider<ThemeCubit>(
+            create: (_) => ThemeCubit(sharedPreferences),
+          ),
+
+          // ── Auth ───────────────────────────────────────────────────────────
           BlocProvider<AuthCubit>(
             create: (_) => AuthCubit(
               authRepository: authRepository,
               storageService: storageService,
             ),
           ),
+
+          // ── Feed ───────────────────────────────────────────────────────────
           BlocProvider<FeedCubit>(
             create: (_) => FeedCubit(
               getNearbyHappenings: getNearbyHappenings,
               locationService: locationService,
             ),
           ),
+
+          // ── Map ────────────────────────────────────────────────────────────
           BlocProvider<MapCubit>(
             create: (_) => MapCubit(
               mapRepository: mapRepository,
               locationService: locationService,
             ),
           ),
+
+          // ── Notifications ──────────────────────────────────────────────────
           BlocProvider<NotificationCubit>(
             create: (_) => NotificationCubit(
               notificationRepository: notificationRepository,
             )..loadUnreadCount(),
           ),
+
+          // ── Connectivity ───────────────────────────────────────────────────
           BlocProvider<ConnectivityCubit>(
             create: (_) => ConnectivityCubit(connectivityService),
           ),
         ],
-        child: MaterialApp.router(
-          title: 'Mob',
-          debugShowCheckedModeBanner: false,
+        child: BlocBuilder<ThemeCubit, ThemeState>(
+          // Rebuild MaterialApp only when the accent actually changes,
+          // not on every unrelated state update.
+          buildWhen: (prev, next) =>
+              prev.accentColor != next.accentColor ||
+              prev.isDark != next.isDark,
+          builder: (context, themeState) {
+            return MaterialApp.router(
+              title: 'Mob',
+              debugShowCheckedModeBanner: false,
 
+              // Dynamic theme — responds to accent picker in Settings
+              theme:      MobTheme.fromAccent(themeState.accentColor),
+              darkTheme:  MobTheme.fromAccent(themeState.accentColor),
+              themeMode:  themeState.isDark ? ThemeMode.dark : ThemeMode.light,
 
-          theme: MobTheme.darkTheme,
-          themeMode: ThemeMode.dark,
+              routerConfig: AppRouter.router,
 
-
-          routerConfig: AppRouter.router,
-
-
-          builder: (context, child) {
-            return GestureDetector(
-              onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-              child: child,
+              builder: (context, child) {
+                return GestureDetector(
+                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+                  child: child,
+                );
+              },
             );
           },
         ),
