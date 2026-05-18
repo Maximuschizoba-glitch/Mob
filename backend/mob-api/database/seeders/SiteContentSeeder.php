@@ -14,7 +14,7 @@ class SiteContentSeeder extends Seeder
             ['key' => 'hero_title', 'group' => 'landing', 'label' => 'Hero Title', 'type' => 'text', 'value' => 'Your City Is Alive. Are You?', 'description' => 'Main headline on landing page', 'sort_order' => 1],
             ['key' => 'hero_subtitle', 'group' => 'landing', 'label' => 'Hero Subtitle', 'type' => 'textarea', 'value' => 'Mob shows you what\'s happening around you right now — parties, concerts, pop-ups, and more. Live photos, real crowd vibes, and secure tickets. All in one app.', 'description' => 'Text below headline', 'sort_order' => 2],
             ['key' => 'hero_image', 'group' => 'landing', 'label' => 'Hero Image URL', 'type' => 'image', 'value' => '', 'description' => 'Phone mockup or hero image (paste URL)', 'sort_order' => 3],
-            ['key' => 'appstore_url', 'group' => 'landing', 'label' => 'App Store URL', 'type' => 'url', 'value' => '#', 'description' => 'Apple App Store link', 'sort_order' => 4],
+            ['key' => 'appstore_url', 'group' => 'landing', 'label' => 'App Store URL', 'type' => 'url', 'value' => 'https://testflight.apple.com/join/8yY4wj51', 'description' => 'Apple App Store / TestFlight link', 'sort_order' => 4],
             ['key' => 'playstore_url', 'group' => 'landing', 'label' => 'Play Store URL', 'type' => 'url', 'value' => '#', 'description' => 'Google Play Store link', 'sort_order' => 5],
 
 

@@ -49,7 +49,7 @@
                 <a href="#how-it-works" class="text-mob-muted hover:text-white text-sm transition-colors">How It Works</a>
                 <a href="#about" class="text-mob-muted hover:text-white text-sm transition-colors">About</a>
             </div>
-            <a href="{{ $c['playstore_url'] ?? '#' }}" class="bg-mob-cyan text-mob-bg font-bold px-5 py-2.5 rounded-xl text-sm hover:bg-mob-cyan/90 transition-all hover:shadow-lg hover:shadow-mob-cyan/20">
+            <a href="{{ $c['appstore_url'] ?? '#' }}" target="_blank" rel="noopener" class="bg-mob-cyan text-mob-bg font-bold px-5 py-2.5 rounded-xl text-sm hover:bg-mob-cyan/90 transition-all hover:shadow-lg hover:shadow-mob-cyan/20">
                 Download App
             </a>
         </div>
@@ -69,14 +69,16 @@
                 {{ $c['hero_subtitle'] ?? '' }}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-                <a href="{{ $c['appstore_url'] ?? '#' }}" class="flex items-center gap-3 bg-white text-black px-7 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all hover:scale-105">
+                <a href="{{ $c['appstore_url'] ?? '#' }}" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white text-black px-7 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all hover:scale-105">
                     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                    <div class="text-left"><span class="text-[10px] block opacity-60">Download on the</span><span class="text-base">App Store</span></div>
+                    <div class="text-left"><span class="text-[10px] block opacity-60">Beta — Join on</span><span class="text-base">TestFlight</span></div>
                 </a>
-                <a href="{{ $c['playstore_url'] ?? '#' }}" class="flex items-center gap-3 bg-white text-black px-7 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all hover:scale-105">
+                @if(!empty($c['playstore_url']) && $c['playstore_url'] !== '#')
+                <a href="{{ $c['playstore_url'] }}" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white text-black px-7 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all hover:scale-105">
                     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
                     <div class="text-left"><span class="text-[10px] block opacity-60">Get it on</span><span class="text-base">Google Play</span></div>
                 </a>
+                @endif
             </div>
             @if(!empty($c['hero_image']))
             <div class="max-w-sm mx-auto">
@@ -173,14 +175,16 @@
                     <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">{{ $c['cta_title'] ?? 'Ready to See What\'s Happening?' }}</h2>
                     <p class="text-mob-muted text-lg mb-10 max-w-xl mx-auto">{{ $c['cta_subtitle'] ?? '' }}</p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="{{ $c['appstore_url'] ?? '#' }}" class="flex items-center gap-3 bg-white text-black px-7 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all hover:scale-105">
+                        <a href="{{ $c['appstore_url'] ?? '#' }}" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white text-black px-7 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all hover:scale-105">
                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                            App Store
+                            <div class="text-left"><span class="text-[10px] block opacity-60">Beta — Join on</span><span class="text-base">TestFlight</span></div>
                         </a>
-                        <a href="{{ $c['playstore_url'] ?? '#' }}" class="flex items-center gap-3 bg-white text-black px-7 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all hover:scale-105">
+                        @if(!empty($c['playstore_url']) && $c['playstore_url'] !== '#')
+                        <a href="{{ $c['playstore_url'] }}" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white text-black px-7 py-4 rounded-2xl font-bold hover:bg-gray-100 transition-all hover:scale-105">
                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 010 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
-                            Google Play
+                            <div class="text-left"><span class="text-[10px] block opacity-60">Get it on</span><span class="text-base">Google Play</span></div>
                         </a>
+                        @endif
                     </div>
                     @if(!empty($c['cta_image']))
                     <img src="{{ $c['cta_image'] }}" alt="Download Mob" class="mx-auto mt-12 max-w-xs rounded-2xl">
