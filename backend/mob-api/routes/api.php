@@ -2,6 +2,7 @@
 
 use App\Enums\HappeningCategory;
 use App\Http\Controllers\Api\V1\Admin\DashboardController;
+use App\Http\Controllers\Api\V1\Admin\LogController;
 use App\Http\Controllers\Api\V1\Admin\EscrowAdminController;
 use App\Http\Controllers\Api\V1\Admin\ModerationController;
 use App\Http\Controllers\Api\V1\Admin\VerificationController;
@@ -177,6 +178,7 @@ Route::prefix('v1/admin')->middleware(['auth:sanctum', 'not-suspended', 'admin',
 
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/activity-log', [DashboardController::class, 'activityLog']);
+    Route::get('/logs', [LogController::class, 'tail']);
 
 
     Route::get('/verifications', [VerificationController::class, 'index']);
