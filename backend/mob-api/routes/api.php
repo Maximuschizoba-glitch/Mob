@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('v1')->middleware('throttle:api')->group(function () {
+Route::prefix('v1')->group(function () {
 
 
     Route::get('/health', function () {
@@ -73,6 +73,7 @@ Route::prefix('v1')->middleware('throttle:api')->group(function () {
     });
 
 
+    // Auth endpoints: only the 'auth' limiter applies (no outer throttle:api on this group).
     Route::prefix('auth')->middleware('throttle:auth')->group(function () {
         Route::post('/register', [AuthController::class, 'register']);
         Route::post('/login', [AuthController::class, 'login']);
@@ -80,17 +81,21 @@ Route::prefix('v1')->middleware('throttle:api')->group(function () {
     });
 
 
-    Route::prefix('happenings')->group(function () {
+    // Public browsing endpoints: standard api limiter.
+    Route::prefix('happenings')->middleware('throttle:api')->group(function () {
         Route::get('/', [HappeningController::class, 'index']);
         Route::get('/map', [HappeningController::class, 'map']);
         Route::get('/{uuid}', [HappeningController::class, 'show']);
     });
+
+    // Health / info are open (no rate limit needed — they're cheap and used by uptime monitors).
 });
 
 
-Route::prefix('v1')->middleware(['auth:sanctum', 'not-suspended', 'throttle:api'])->group(function () {
+Route::prefix('v1')->middleware(['auth:sanctum', 'not-suspended'])->group(function () {
 
 
+    // Auth sub-routes: only throttle:auth applies.
     Route::prefix('auth')->middleware('throttle:auth')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::get('/user', [AuthController::class, 'user']);
@@ -102,63 +107,68 @@ Route::prefix('v1')->middleware(['auth:sanctum', 'not-suspended', 'throttle:api'
     });
 
 
-    Route::put('/profile', [AuthController::class, 'updateProfile'])
-        ->middleware('not-guest');
-    Route::delete('/profile', [AuthController::class, 'deleteAccount'])
-        ->middleware('not-guest');
+    // All other authenticated API routes share the standard api limiter.
+    Route::middleware('throttle:api')->group(function () {
+
+        Route::put('/profile', [AuthController::class, 'updateProfile'])
+            ->middleware('not-guest');
+        Route::delete('/profile', [AuthController::class, 'deleteAccount'])
+            ->middleware('not-guest');
 
 
-    Route::get('/profile/happenings', [HappeningController::class, 'myHappenings']);
-    Route::post('/happenings', [HappeningController::class, 'store'])
-        ->middleware(['not-guest', 'verified-phone', 'throttle:posting']);
-    Route::put('/happenings/{uuid}', [HappeningController::class, 'update'])
-        ->middleware('not-guest');
-    Route::post('/happenings/{uuid}/end', [HappeningController::class, 'endEvent'])
-        ->middleware('not-guest');
-    Route::delete('/happenings/{uuid}', [HappeningController::class, 'destroy'])
-        ->middleware('not-guest');
+        Route::get('/profile/happenings', [HappeningController::class, 'myHappenings']);
+        Route::post('/happenings', [HappeningController::class, 'store'])
+            ->middleware(['not-guest', 'verified-phone', 'throttle:posting']);
+        Route::put('/happenings/{uuid}', [HappeningController::class, 'update'])
+            ->middleware('not-guest');
+        Route::post('/happenings/{uuid}/end', [HappeningController::class, 'endEvent'])
+            ->middleware('not-guest');
+        Route::delete('/happenings/{uuid}', [HappeningController::class, 'destroy'])
+            ->middleware('not-guest');
 
 
-    Route::post('/happenings/{uuid}/snaps', [SnapController::class, 'store'])
-        ->middleware(['not-guest', 'throttle:posting']);
-    Route::get('/happenings/{uuid}/snaps', [SnapController::class, 'index']);
+        Route::post('/happenings/{uuid}/snaps', [SnapController::class, 'store'])
+            ->middleware(['not-guest', 'throttle:posting']);
+        Route::get('/happenings/{uuid}/snaps', [SnapController::class, 'index']);
 
 
-    Route::post('/happenings/{uuid}/report', [ReportController::class, 'store'])
-        ->middleware('not-guest');
+        Route::post('/happenings/{uuid}/report', [ReportController::class, 'store'])
+            ->middleware('not-guest');
 
 
-    Route::middleware('not-guest')->group(function () {
-        Route::post('/tickets/purchase', [TicketController::class, 'purchase']);
-        Route::get('/tickets', [TicketController::class, 'index']);
-        Route::get('/tickets/{uuid}', [TicketController::class, 'show']);
-        Route::post('/tickets/{uuid}/verify', [TicketController::class, 'verify']);
+        Route::middleware('not-guest')->group(function () {
+            Route::post('/tickets/purchase', [TicketController::class, 'purchase']);
+            Route::get('/tickets', [TicketController::class, 'index']);
+            Route::get('/tickets/{uuid}', [TicketController::class, 'show']);
+            Route::post('/tickets/{uuid}/verify', [TicketController::class, 'verify']);
 
 
-        Route::post('/happenings/{uuid}/tickets/verify', [TicketController::class, 'verifyForCheckIn']);
-    });
+            Route::post('/happenings/{uuid}/tickets/verify', [TicketController::class, 'verifyForCheckIn']);
+        });
 
 
-    Route::get('/escrow/{uuid}', [EscrowController::class, 'show'])
-        ->middleware('not-guest');
-    Route::get('/happenings/{uuid}/escrow', [EscrowController::class, 'showByHappening'])
-        ->middleware('not-guest');
-    Route::post('/escrow/{uuid}/complete', [EscrowController::class, 'hostMarkComplete'])
-        ->middleware(['not-guest', 'host']);
+        Route::get('/escrow/{uuid}', [EscrowController::class, 'show'])
+            ->middleware('not-guest');
+        Route::get('/happenings/{uuid}/escrow', [EscrowController::class, 'showByHappening'])
+            ->middleware('not-guest');
+        Route::post('/escrow/{uuid}/complete', [EscrowController::class, 'hostMarkComplete'])
+            ->middleware(['not-guest', 'host']);
 
 
-    Route::post('/host/verify', [HostController::class, 'requestVerification'])
-        ->middleware('not-guest');
-    Route::get('/host/verification-status', [HostController::class, 'verificationStatus'])
-        ->middleware('not-guest');
+        Route::post('/host/verify', [HostController::class, 'requestVerification'])
+            ->middleware('not-guest');
+        Route::get('/host/verification-status', [HostController::class, 'verificationStatus'])
+            ->middleware('not-guest');
 
 
-    Route::prefix('notifications')->group(function () {
-        Route::get('/', [NotificationController::class, 'index']);
-        Route::put('/read-all', [NotificationController::class, 'markAllAsRead']);
-        Route::get('/unread-count', [NotificationController::class, 'unreadCount']);
-        Route::put('/{uuid}/read', [NotificationController::class, 'markAsRead']);
-    });
+        Route::prefix('notifications')->group(function () {
+            Route::get('/', [NotificationController::class, 'index']);
+            Route::put('/read-all', [NotificationController::class, 'markAllAsRead']);
+            Route::get('/unread-count', [NotificationController::class, 'unreadCount']);
+            Route::put('/{uuid}/read', [NotificationController::class, 'markAsRead']);
+        });
+
+    }); // end throttle:api
 });
 
 

@@ -46,8 +46,9 @@ class AppServiceProvider extends ServiceProvider
         $isProd = $this->app->environment('production');
 
         RateLimiter::for('api', function (Request $request) use ($isProd) {
-            $authLimit  = (int) config('ratelimit.api_auth',  $isProd ? 120 : 600);
-            $guestLimit = (int) config('ratelimit.api_guest', $isProd ? 30  : 120);
+            // Authenticated users are keyed by user ID; guests by IP.
+            $authLimit  = (int) config('ratelimit.api_auth',  $isProd ? 180 : 600);
+            $guestLimit = (int) config('ratelimit.api_guest', $isProd ? 60  : 200);
 
             return $request->user()
                 ? Limit::perMinute($authLimit)->by($request->user()->id)
@@ -55,7 +56,10 @@ class AppServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('auth', function (Request $request) use ($isProd) {
-            $limit = (int) config('ratelimit.auth', $isProd ? 10 : 60);
+            // Auth routes (login, register, OTP) are NOT nested under throttle:api,
+            // so this is their only limiter. Keep it tight enough to block brute-force
+            // but loose enough for legitimate multi-step OTP flows.
+            $limit = (int) config('ratelimit.auth', $isProd ? 30 : 120);
 
             return Limit::perMinute($limit)->by($request->ip());
         });
@@ -67,7 +71,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('posting', function (Request $request) use ($isProd) {
-            $limit = (int) config('ratelimit.posting', $isProd ? 20 : 60);
+            $limit = (int) config('ratelimit.posting', $isProd ? 40 : 120);
 
             return Limit::perMinute($limit)->by($request->user()?->id ?: $request->ip());
         });
