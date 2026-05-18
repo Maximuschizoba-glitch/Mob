@@ -11,35 +11,35 @@ class SiteContentSeeder extends Seeder
     {
         $contents = [
 
-            ['key' => 'hero_title', 'group' => 'landing', 'label' => 'Hero Title', 'type' => 'text', 'value' => 'See What\'s Happening Now', 'description' => 'Main headline on landing page', 'sort_order' => 1],
-            ['key' => 'hero_subtitle', 'group' => 'landing', 'label' => 'Hero Subtitle', 'type' => 'textarea', 'value' => 'Discover real-time events, parties, and happenings around you. Live snaps, vibe scores, and instant tickets — all in one app.', 'description' => 'Text below headline', 'sort_order' => 2],
+            ['key' => 'hero_title', 'group' => 'landing', 'label' => 'Hero Title', 'type' => 'text', 'value' => 'Your City Is Alive. Are You?', 'description' => 'Main headline on landing page', 'sort_order' => 1],
+            ['key' => 'hero_subtitle', 'group' => 'landing', 'label' => 'Hero Subtitle', 'type' => 'textarea', 'value' => 'Mob shows you what\'s happening around you right now — parties, concerts, pop-ups, and more. Live photos, real crowd vibes, and secure tickets. All in one app.', 'description' => 'Text below headline', 'sort_order' => 2],
             ['key' => 'hero_image', 'group' => 'landing', 'label' => 'Hero Image URL', 'type' => 'image', 'value' => '', 'description' => 'Phone mockup or hero image (paste URL)', 'sort_order' => 3],
             ['key' => 'appstore_url', 'group' => 'landing', 'label' => 'App Store URL', 'type' => 'url', 'value' => '#', 'description' => 'Apple App Store link', 'sort_order' => 4],
             ['key' => 'playstore_url', 'group' => 'landing', 'label' => 'Play Store URL', 'type' => 'url', 'value' => '#', 'description' => 'Google Play Store link', 'sort_order' => 5],
 
 
-            ['key' => 'features_title', 'group' => 'landing', 'label' => 'Features Section Title', 'type' => 'text', 'value' => 'Everything You Need to Discover What\'s Happening', 'description' => '', 'sort_order' => 10],
-            ['key' => 'feature_1_icon', 'group' => 'landing', 'label' => 'Feature 1 Icon (emoji)', 'type' => 'text', 'value' => "\u{1F525}", 'description' => '', 'sort_order' => 11],
-            ['key' => 'feature_1_title', 'group' => 'landing', 'label' => 'Feature 1 Title', 'type' => 'text', 'value' => 'Live Discovery', 'description' => '', 'sort_order' => 12],
-            ['key' => 'feature_1_desc', 'group' => 'landing', 'label' => 'Feature 1 Description', 'type' => 'textarea', 'value' => 'See what\'s happening right now on a live map and feed. Real-time updates, crowd levels, and vibe scores from people actually there.', 'description' => '', 'sort_order' => 13],
-            ['key' => 'feature_2_icon', 'group' => 'landing', 'label' => 'Feature 2 Icon', 'type' => 'text', 'value' => "\u{1F4F8}", 'description' => '', 'sort_order' => 14],
-            ['key' => 'feature_2_title', 'group' => 'landing', 'label' => 'Feature 2 Title', 'type' => 'text', 'value' => 'Live Snaps', 'description' => '', 'sort_order' => 15],
-            ['key' => 'feature_2_desc', 'group' => 'landing', 'label' => 'Feature 2 Description', 'type' => 'textarea', 'value' => 'See the real vibe before you go. Users share live photos from events so you know exactly what to expect.', 'description' => '', 'sort_order' => 16],
-            ['key' => 'feature_3_icon', 'group' => 'landing', 'label' => 'Feature 3 Icon', 'type' => 'text', 'value' => "\u{1F39F}\u{FE0F}", 'description' => '', 'sort_order' => 17],
-            ['key' => 'feature_3_title', 'group' => 'landing', 'label' => 'Feature 3 Title', 'type' => 'text', 'value' => 'Secure Tickets', 'description' => '', 'sort_order' => 18],
-            ['key' => 'feature_3_desc', 'group' => 'landing', 'label' => 'Feature 3 Description', 'type' => 'textarea', 'value' => 'Buy tickets with escrow-protected payments. Your money is safe until the event actually happens.', 'description' => '', 'sort_order' => 19],
-            ['key' => 'feature_4_icon', 'group' => 'landing', 'label' => 'Feature 4 Icon', 'type' => 'text', 'value' => "\u{1F451}", 'description' => '', 'sort_order' => 20],
-            ['key' => 'feature_4_title', 'group' => 'landing', 'label' => 'Feature 4 Title', 'type' => 'text', 'value' => 'Host Events', 'description' => '', 'sort_order' => 21],
-            ['key' => 'feature_4_desc', 'group' => 'landing', 'label' => 'Feature 4 Description', 'type' => 'textarea', 'value' => 'Create and manage your own events with built-in ticket sales, QR code check-in, and a real-time event dashboard.', 'description' => '', 'sort_order' => 22],
+            ['key' => 'features_title', 'group' => 'landing', 'label' => 'Features Section Title', 'type' => 'text', 'value' => 'Built for People Who Actually Go Out', 'description' => '', 'sort_order' => 10],
+            ['key' => 'feature_1_icon', 'group' => 'landing', 'label' => 'Feature 1 Icon (emoji)', 'type' => 'text', 'value' => '🗺️', 'description' => '', 'sort_order' => 11],
+            ['key' => 'feature_1_title', 'group' => 'landing', 'label' => 'Feature 1 Title', 'type' => 'text', 'value' => 'Real-Time Map & Feed', 'description' => '', 'sort_order' => 12],
+            ['key' => 'feature_1_desc', 'group' => 'landing', 'label' => 'Feature 1 Description', 'type' => 'textarea', 'value' => 'Open Mob and instantly see every active event near you on a live map or scrollable feed. Concerts, parties, markets, pop-ups — if it\'s happening, it\'s on Mob.', 'description' => '', 'sort_order' => 13],
+            ['key' => 'feature_2_icon', 'group' => 'landing', 'label' => 'Feature 2 Icon', 'type' => 'text', 'value' => '📸', 'description' => '', 'sort_order' => 14],
+            ['key' => 'feature_2_title', 'group' => 'landing', 'label' => 'Feature 2 Title', 'type' => 'text', 'value' => 'Live Snaps from the Crowd', 'description' => '', 'sort_order' => 15],
+            ['key' => 'feature_2_desc', 'group' => 'landing', 'label' => 'Feature 2 Description', 'type' => 'textarea', 'value' => 'Real people share live photos straight from events. See the actual crowd, energy, and vibe before you even leave your house. No filters. No lies.', 'description' => '', 'sort_order' => 16],
+            ['key' => 'feature_3_icon', 'group' => 'landing', 'label' => 'Feature 3 Icon', 'type' => 'text', 'value' => '🔒', 'description' => '', 'sort_order' => 17],
+            ['key' => 'feature_3_title', 'group' => 'landing', 'label' => 'Feature 3 Title', 'type' => 'text', 'value' => 'Escrow-Protected Tickets', 'description' => '', 'sort_order' => 18],
+            ['key' => 'feature_3_desc', 'group' => 'landing', 'label' => 'Feature 3 Description', 'type' => 'textarea', 'value' => 'Tired of paying for events that don\'t show up? Mob holds your money in escrow and only releases it to the host after the event. Buy with confidence, every time.', 'description' => '', 'sort_order' => 19],
+            ['key' => 'feature_4_icon', 'group' => 'landing', 'label' => 'Feature 4 Icon', 'type' => 'text', 'value' => '🎤', 'description' => '', 'sort_order' => 20],
+            ['key' => 'feature_4_title', 'group' => 'landing', 'label' => 'Feature 4 Title', 'type' => 'text', 'value' => 'Host & Sell Tickets', 'description' => '', 'sort_order' => 21],
+            ['key' => 'feature_4_desc', 'group' => 'landing', 'label' => 'Feature 4 Description', 'type' => 'textarea', 'value' => 'Create your event in minutes. Set ticket prices, manage capacity, and check in guests with QR codes. Your dashboard shows real-time sales and attendance as they happen.', 'description' => '', 'sort_order' => 22],
 
 
-            ['key' => 'how_title', 'group' => 'landing', 'label' => 'How It Works Title', 'type' => 'text', 'value' => 'How Mob Works', 'description' => '', 'sort_order' => 30],
-            ['key' => 'step_1_title', 'group' => 'landing', 'label' => 'Step 1 Title', 'type' => 'text', 'value' => 'Open the App', 'description' => '', 'sort_order' => 31],
-            ['key' => 'step_1_desc', 'group' => 'landing', 'label' => 'Step 1 Description', 'type' => 'textarea', 'value' => 'Browse the live feed or explore the map to see what\'s happening around you right now.', 'description' => '', 'sort_order' => 32],
-            ['key' => 'step_2_title', 'group' => 'landing', 'label' => 'Step 2 Title', 'type' => 'text', 'value' => 'Discover & Decide', 'description' => '', 'sort_order' => 33],
-            ['key' => 'step_2_desc', 'group' => 'landing', 'label' => 'Step 2 Description', 'type' => 'textarea', 'value' => 'Check live snaps, vibe scores, and crowd levels to decide where to go.', 'description' => '', 'sort_order' => 34],
-            ['key' => 'step_3_title', 'group' => 'landing', 'label' => 'Step 3 Title', 'type' => 'text', 'value' => 'Get Tickets & Go', 'description' => '', 'sort_order' => 35],
-            ['key' => 'step_3_desc', 'group' => 'landing', 'label' => 'Step 3 Description', 'type' => 'textarea', 'value' => 'Grab your ticket securely, show the QR code at the door, and enjoy.', 'description' => '', 'sort_order' => 36],
+            ['key' => 'how_title', 'group' => 'landing', 'label' => 'How It Works Title', 'type' => 'text', 'value' => 'From Your Couch to the Party in 3 Steps', 'description' => '', 'sort_order' => 30],
+            ['key' => 'step_1_title', 'group' => 'landing', 'label' => 'Step 1 Title', 'type' => 'text', 'value' => 'Open Mob & See What\'s Near You', 'description' => '', 'sort_order' => 31],
+            ['key' => 'step_1_desc', 'group' => 'landing', 'label' => 'Step 1 Description', 'type' => 'textarea', 'value' => 'The live feed and map load instantly with everything happening in your city right now. Events expire in 24 hours — so everything you see is fresh and actually happening today.', 'description' => '', 'sort_order' => 32],
+            ['key' => 'step_2_title', 'group' => 'landing', 'label' => 'Step 2 Title', 'type' => 'text', 'value' => 'Check the Vibe Before You Go', 'description' => '', 'sort_order' => 33],
+            ['key' => 'step_2_desc', 'group' => 'landing', 'label' => 'Step 2 Description', 'type' => 'textarea', 'value' => 'Tap any event to see live snaps posted by people already there. Read the crowd. Feel the energy. Decide if it\'s worth the trip — before you leave the house.', 'description' => '', 'sort_order' => 34],
+            ['key' => 'step_3_title', 'group' => 'landing', 'label' => 'Step 3 Title', 'type' => 'text', 'value' => 'Buy Your Ticket & Walk In', 'description' => '', 'sort_order' => 35],
+            ['key' => 'step_3_desc', 'group' => 'landing', 'label' => 'Step 3 Description', 'type' => 'textarea', 'value' => 'Grab a ticket safely with escrow-protected payment. Your money is held until the event actually happens. Show your QR code at the door and you\'re in. That simple.', 'description' => '', 'sort_order' => 36],
 
 
             ['key' => 'testimonials_title', 'group' => 'landing', 'label' => 'Testimonials Title', 'type' => 'text', 'value' => 'What People Are Saying', 'description' => '', 'sort_order' => 40],
@@ -55,15 +55,15 @@ class SiteContentSeeder extends Seeder
 
 
             ['key' => 'about_title', 'group' => 'about', 'label' => 'About Title', 'type' => 'text', 'value' => 'About Mob', 'description' => '', 'sort_order' => 50],
-            ['key' => 'about_text', 'group' => 'about', 'label' => 'About Description', 'type' => 'richtext', 'value' => '<p>Mob is your live city guide. We connect people with what\'s happening around them in real-time — from parties and concerts to food pop-ups and casual hangouts.</p><p>Built in Lagos, for Lagos. Everything expires in 24 hours because what matters is what\'s happening <strong>now</strong>.</p>', 'description' => 'Rich text about section', 'sort_order' => 51],
+            ['key' => 'about_text', 'group' => 'about', 'label' => 'About Description', 'type' => 'richtext', 'value' => '<p>Mob is a <strong>real-time social discovery app</strong> built for people who want to know what\'s happening in their city right now — not tomorrow, not next week. Now.</p><p>We started in <strong>Lagos</strong> because Lagos never sleeps. There\'s always something going on — a rooftop party, a live show, a street food pop-up, a last-minute hangout. The problem was finding it. Mob fixes that.</p><p>Everything on Mob expires in <strong>24 hours</strong>. That keeps the feed honest, fresh, and actually useful. No outdated events cluttering your screen. Just what\'s happening today.</p><p>We built Mob for the curious, the spontaneous, and the people who hate missing out. If that\'s you — download the app. Your city is waiting.</p>', 'description' => 'Rich text about section', 'sort_order' => 51],
 
 
-            ['key' => 'cta_title', 'group' => 'landing', 'label' => 'CTA Title', 'type' => 'text', 'value' => 'Ready to See What\'s Happening?', 'description' => 'Download section heading', 'sort_order' => 60],
-            ['key' => 'cta_subtitle', 'group' => 'landing', 'label' => 'CTA Subtitle', 'type' => 'textarea', 'value' => 'Download Mob and never miss out on the best events around you.', 'description' => '', 'sort_order' => 61],
+            ['key' => 'cta_title', 'group' => 'landing', 'label' => 'CTA Title', 'type' => 'text', 'value' => 'Stop Missing Out. Start Mobbing.', 'description' => 'Download section heading', 'sort_order' => 60],
+            ['key' => 'cta_subtitle', 'group' => 'landing', 'label' => 'CTA Subtitle', 'type' => 'textarea', 'value' => 'Download Mob and join thousands of people discovering what\'s happening in Lagos right now.', 'description' => '', 'sort_order' => 61],
             ['key' => 'cta_image', 'group' => 'landing', 'label' => 'CTA Phone Mockup URL', 'type' => 'image', 'value' => '', 'description' => 'Phone mockup image URL', 'sort_order' => 62],
 
 
-            ['key' => 'footer_description', 'group' => 'footer', 'label' => 'Footer Description', 'type' => 'textarea', 'value' => 'Mob is a real-time social discovery platform that connects you with what\'s happening around you — events, parties, food spots, and more. Everything expires in 24 hours.', 'description' => '', 'sort_order' => 70],
+            ['key' => 'footer_description', 'group' => 'footer', 'label' => 'Footer Description', 'type' => 'textarea', 'value' => 'Mob is a real-time social discovery platform built in Lagos, for Lagos. Discover events, buy safe tickets, and see the actual vibe — all before you leave the house.', 'description' => '', 'sort_order' => 70],
             ['key' => 'footer_email', 'group' => 'footer', 'label' => 'Contact Email', 'type' => 'text', 'value' => 'hello@getbuukride.com', 'description' => '', 'sort_order' => 71],
             ['key' => 'footer_instagram', 'group' => 'footer', 'label' => 'Instagram URL', 'type' => 'url', 'value' => '', 'description' => 'Leave empty to hide', 'sort_order' => 72],
             ['key' => 'footer_twitter', 'group' => 'footer', 'label' => 'Twitter/X URL', 'type' => 'url', 'value' => '', 'description' => 'Leave empty to hide', 'sort_order' => 73],
